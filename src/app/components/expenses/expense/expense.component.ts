@@ -18,15 +18,15 @@ export class ExpenseComponent {
     this.deleteEvent.emit(this.expense.title);
   }
 
-  deleteParticipant(p: Person) {
-    // if (p === null) {
-    //   return;
-    // }
-    // for (let i = 0; i < this.expense.participants.length; i++) {
-    //   if (p === this.expense.participants[i]) {
-    //     this.expense.participants.splice(i, 1);
-    //   }
-    // }
-    // this.minimizeTransactions();
-  }
+  // deleteParticipant(p: Person) {
+  //   if (p === null) {
+  //     return;
+  //   }
+  //   for (let i = 0; i < this.expense.participants.length; i++) {
+  //     if (p === this.expense.participants[i]) {
+  //       this.expense.participants.splice(i, 1);
+  //     }
+  //   }
+  //   this.minimizeTransactions();
+  // }
 }

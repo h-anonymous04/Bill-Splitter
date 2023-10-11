@@ -12,18 +12,17 @@
             </p>
             <p class="mt-3">
                 <strong>Participants: </strong>
-                <!-- <span *ngFor="let p of expense.participants"
-                    class="badge rounded-pill bg-light text-dark mx-1 p-2">{{p.name}}</span> -->
+                <span *ngFor="let p of expense.participants"
+                    class="badge rounded-pill bg-light text-dark mx-1 p-2">{{p.name}}</span>
                 <!-- Inside your ngFor loop -->
-                <span *ngFor="let p of expense.participants" class="badge rounded-pill bg-light text-dark mx-1 p-2"
+                <!-- <span *ngFor="let p of expense.participants" class="badge rounded-pill bg-light text-dark mx-1 p-2"
                     (mouseover)="hoveredParticipant = p.name" (mouseleave)="hoveredParticipant = null">
                     {{p.name}}
                     <span *ngIf="hoveredParticipant === p.name" role="button" (click)="deleteParticipant(p)"
                         class="text-danger mx-2">
                         &#10060;
                     </span>
-                </span>
-
+                </span> -->
             </p>
             <p class="text-end">
                 <span role="button" (click)="deleteExpense()" class="text-danger mx-2">Delete</span>
