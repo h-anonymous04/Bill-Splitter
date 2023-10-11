@@ -1,0 +1,33 @@
+<div class="rounded border p-3 mt-3">
+    <div class="row">
+        <div class="col-12">
+            <div>
+                <h3 class="fw-bold mb-3">{{expense.title}}
+                    <span class="float-end">{{expense.amount}}</span>
+                </h3>
+            </div>
+            <p class="mb-0">
+                <strong>Paid by: </strong>
+                <span class="badge rounded-pill bg-dark mx-1 text-light p-2">{{expense.by.name}}</span>
+            </p>
+            <p class="mt-3">
+                <strong>Participants: </strong>
+                <!-- <span *ngFor="let p of expense.participants"
+                    class="badge rounded-pill bg-light text-dark mx-1 p-2">{{p.name}}</span> -->
+                <!-- Inside your ngFor loop -->
+                <span *ngFor="let p of expense.participants" class="badge rounded-pill bg-light text-dark mx-1 p-2"
+                    (mouseover)="hoveredParticipant = p.name" (mouseleave)="hoveredParticipant = null">
+                    {{p.name}}
+                    <span *ngIf="hoveredParticipant === p.name" role="button" (click)="deleteParticipant(p)"
+                        class="text-danger mx-2">
+                        &#10060;
+                    </span>
+                </span>
+
+            </p>
+            <p class="text-end">
+                <span role="button" (click)="deleteExpense()" class="text-danger mx-2">Delete</span>
+            </p>
+        </div>
+    </div>
+</div>

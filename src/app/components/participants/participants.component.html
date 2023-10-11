@@ -1,0 +1,11 @@
+<hr>
+<div class="py-3 px-1">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Add person name..." #participantName>
+        <button class="btn btn-outline-dark" type="button"
+            (click)="addParticipant(participantName.value.trim()); participantName.value = '';">
+            <span class="fa fa-plus"></span>
+        </button>
+    </div>
+    <app-participant *ngFor="let p of group.participants" [participant]="p"></app-participant>
+</div>

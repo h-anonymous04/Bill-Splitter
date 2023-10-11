@@ -1,0 +1,10 @@
+<div class="py-3 px-1">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Add new group name..." #groupName>
+        <button class="btn btn-outline-dark" type="button" (click)="addGroup(groupName.value); groupName.value = '';">
+            <span class="fa fa-plus"></span>
+        </button>
+    </div>
+    <app-group *ngFor='let group of groups' (deleteGroupEvent)="deleteGroup($event)" [groupName]='group.name'
+        (click)="selectGroup(group)"></app-group>
+</div>

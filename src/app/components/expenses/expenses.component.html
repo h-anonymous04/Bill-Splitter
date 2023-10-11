@@ -1,0 +1,87 @@
+<div class="py-3">
+    <div class="container-fluid">
+        <div *ngIf="this.group.minimizedTransactions.length > 0">
+            <div class="row">
+                <h3>Suggested Payments</h3>
+                <br>
+                <app-suggested-payments [transactions]="this.group.minimizedTransactions"></app-suggested-payments>
+            </div>
+            <div class="row">
+                <h3>Total Expenditure</h3>
+                <div>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    Amount
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let p of this.group.participants">
+                                <td>
+                                    {{p.name}}
+                                </td>
+                                <td>
+                                    {{p.totalExpenditure.toFixed(2)}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <div class="w-100 d-flex justify-content-center align-center">
+            <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#addExpense">
+                <span class="fa fa-plus"></span> Expense
+            </button>
+        </div>
+        <div class="modal fade" aria-hidden="true" id="addExpense" tabindex="-1" aria-labelledby="addExpense">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-fullscreen-md-down">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span role="button" class="h5" data-bs-dismiss="modal">
+                            <i class="fa fa-arrow-left"></i>
+                        </span>
+                        <span>
+                            Add New Expense
+                        </span>
+                    </div>
+                    <div class="modal-body">
+                        <label for="title" class="fw-bold">Title</label>
+                        <input type="text" class="form-control" placeholder="Where did you spend?" id="title" #expTitle>
+                        <br>
+                        <label for="by" class="fw-bold">Who's paying?</label>
+                        <select class="form-select" id="by">
+                            <option *ngFor="let p of group.participants" value='{{p.name}}'>{{p.name}}</option>
+                        </select>
+                        <br>
+                        <label class="fw-bold">Paying for</label>
+                        <div class="form-check" *ngFor="let p of group.participants">
+                            <input class="form-check-input payingFor" type="checkbox" value="{{p.name}}" id="{{p.name}}"
+                                checked>
+                            <label class="form-check-label" for="{{p.name}}">
+                                {{p.name}}
+                            </label>
+                        </div>
+                        <br>
+                        <label for="amount" class="fw-bold">How much?</label>
+                        <input type="number" #payingAmount class="form-control" name="amount" id="amount"
+                            placeholder="Amount...">
+                        <br>
+                        <button type="button" data-bs-dismiss="modal"
+                            (click)="addExpense(expTitle.value.trim(), payingAmount.value); expTitle.value=''; payingAmount.value=''"
+                            class="btn btn-primary form-control"><span class="fa fa-plus"></span> Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <app-expense *ngFor="let e of group.expenses" [expense]="e" [minimizeTransactions]="this.group.minimizeTransactions"
+        (deleteEvent)="deleteExpense($event)" [alreadyHasExpense]="this.group.alreadyHasExpense"></app-expense>
+</div>

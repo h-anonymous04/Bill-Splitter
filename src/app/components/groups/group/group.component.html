@@ -1,0 +1,17 @@
+<div class="p-2 mt-2 border rounded d-flex justify-content-between align-items-center">
+    <span>
+        {{groupName}}
+    </span>
+    <button *ngIf="!confirmation" (click)="confirmation = true" class="btn btn-outline-danger">
+        <span class="fa fa-trash"></span>
+    </button>
+    <div class="btn-group" [ngClass]="{'d-none' : !confirmation}" role="group">
+        <button type="button" disabled class="btn btn-outline-disabled">Sure?</button>
+        <button type="button" (click)="deleteGroup()" class="btn btn-outline-danger">
+            <span class="fa fa-check"></span>
+        </button>
+        <button type="button" class="btn btn-outline-primary" (click)="confirmation = false">
+            <span class="fa fa-times"></span>
+        </button>
+    </div>
+</div>

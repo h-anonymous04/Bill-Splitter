@@ -1,0 +1,14 @@
+<div *ngIf="transactions.length > 0">
+    <div *ngFor="let t of transactions" class="rounded border p-3 my-3">
+        <div class="row">
+            <div class="col-lg-9">
+                <span class="h5">
+                    <strong>{{t.from.name}}</strong> owes <strong>{{t.to.name}}</strong>
+                </span>
+            </div>
+            <div class="col-lg-3 text-end">
+                <span class="h3 text-primary"> {{t.amount.toFixed(2)}}</span>
+            </div>
+        </div>
+    </div>
+</div>
