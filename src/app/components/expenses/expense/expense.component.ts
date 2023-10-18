@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Expense } from '../../expense.model';
-import { Person } from '../../person.model';
 
 @Component({
   selector: 'app-expense',
